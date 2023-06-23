@@ -1,7 +1,22 @@
 import csv
 
-file = open('results.csv', encoding='utf-8')
-i = 1
-for line in file:
-    i = i + 1
-    print (line)
+
+test_str = "GeeksforGeeks is best"
+ 
+# printing original string
+print("The original string is : " + test_str)
+ 
+# Using split()
+# Removing Initial word from string
+res = test_str.split(' ', 1)[1]
+ 
+# printing result
+print("The string after omitting first word is : " + str(res))
+
+#return result
+
+#file = open('results.csv', encoding='utf-8')
+#i = 1
+#for line in file:
+#i = i + 1
+#print (i,line)
