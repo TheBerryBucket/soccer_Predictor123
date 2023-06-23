@@ -1,0 +1,8 @@
+x = int(input("Enter number "))
+y = int(input("Enter another number "))
+def addition (q):
+    q = (x+y)
+q = (x+y)
+z = (y+x)
+addition (z)
+print (q+z)

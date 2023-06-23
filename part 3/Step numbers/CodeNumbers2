@@ -1,0 +1,4 @@
+x = int(input("Enter number "))
+def multiplication (x):
+    total = x * x
+print (x * x)

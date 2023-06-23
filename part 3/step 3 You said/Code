@@ -1,0 +1,8 @@
+val = input("Say something ")
+
+
+def you():
+    print("You said:")
+    
+you()
+print(val)

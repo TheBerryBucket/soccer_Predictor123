@@ -1,0 +1,9 @@
+import csv
+
+with open('information.txt', mode='w') as csv_file:
+    fieldnames = ['date ''home''team' 'away_team' 'home_score' 'away_score' 'tournament,city' 'country,neutral']
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerow({'emp_name 1878-03-02,Scotland,England,7,2,Friendly,Glasgow,Scotland,FALSE':})
+    writer.writerow({'emp_name 1882-03-11,Scotland,England,5,1,Friendly,Glasgow,Scotland,FALSE':})
