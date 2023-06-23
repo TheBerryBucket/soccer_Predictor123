@@ -1,5 +1,46 @@
+def power(num,exp):
+    result = 1
+    for z in range(exp):
+        result = num
+    
+    return result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 x = int(input("Enter number "))
 y = int(input("Enter another number "))
-def multiplication (x):
-    total = x ** y
-print (x ** y)
+#def multiplication (x):
+z = power(x,y)
+print (z)
