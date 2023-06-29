@@ -1,0 +1,7 @@
+import csv
+
+with open ('results.csv', 'r',encoding='utf-8') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+
+    for line in csv_reader:
+        print (line['home_team'],line['home_score'], " - " ,line['away_team'],line['away_score'])
