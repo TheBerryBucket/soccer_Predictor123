@@ -1,23 +1,53 @@
 import csv
 
-matches = []
-max = 0
+i = 0
+w = 0
+t = 0
+l = 0
+
+
+
+ 
+list; mteams =  list()
+list; mMatches = list()
 
 with open ('results.csv', 'r',encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
+if((['home_team']) == 0):
+    homeTeam = (['home_team'])(mMatches[i].HomeTeam)
+    mteams.Add(homeTeam)
+
+if((['away_team']) == 0):
+    awayTeam = (['away_team'])(mMatches[i].HomeTeam)
+    mteams.Add(awayTeam)
+
+
+
+
     for line in csv_reader:
-        hs =int(line['home_score'])
-        matches.append(line)
-        if (hs > max):
-             max = hs
+        hs = int(line['home_score'])
+        hsa = int(line['away_score'])
+        if int(line['home_score'] < line['away_score']):
+            ha = homeTeam; l + 1
+        if int(line['home_score'] > line['away_score']):
+            ha = homeTeam; w + 1
+        if int(line['home_score'] == line['away_score']):
+            ha = homeTeam; t + 1
+
+    for line in csv_reader:
+        hs = int(line['home_score'])
+        hsa = int(line['away_score'])
+        if hs < hsa:
+            hsa = awayTeam; w + 1
+        if hs > hsa:
+            hsa = awayTeam; l - 1
+        if hs == hsa:
+            hsa = awayTeam; t + 1
            
            
-print (max)
 
-for line in matches:
-    hs = int(line['home_score']) 
-    if (hs == max):
-        print (line)
+for line in mMatches:
+    int(line['home_team'])
 
-    # print (line['home_team'],line['home_score'], " - " ,line['away_team'],line['away_score'])
+    print("{0}(['home_score']) {1}w{2}l{3}t");
