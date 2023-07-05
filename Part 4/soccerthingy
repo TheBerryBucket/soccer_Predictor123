@@ -1,7 +1,23 @@
 import csv
 
+matches = []
+max = 0
+
 with open ('results.csv', 'r',encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
     for line in csv_reader:
-        print (line['home_team'],line['home_score'], " - " ,line['away_team'],line['away_score'])
+        hs =int(line['home_score'])
+        matches.append(line)
+        if (hs > max):
+             max = hs
+           
+           
+print (max)
+
+for line in matches:
+    hs = int(line['home_score']) 
+    if (hs == max):
+        print (line)
+
+    # print (line['home_team'],line['home_score'], " - " ,line['away_team'],line['away_score'])
