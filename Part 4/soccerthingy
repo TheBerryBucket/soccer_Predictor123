@@ -1,53 +1,59 @@
 import csv
+from collections import namedtuple
 
-i = 0
-w = 0
-t = 0
-l = 0
+Team = namedtuple('Team', ['name','win', 'lose', 'tie'])
+#S = Student('Nandini', '19', '2541997')
+a = []
+T1 = Team('Scotland',3,4,5)
+T2 = Team('England',6,7,8)
+a.append(T1)
+a.append(T2)
 
 
+print (a)
+print (T1.win)
+#indices = [index for index, item in enumerate(a) if item.win == 'Scotland']
+b = [team for team in a if team.name == 'Englandb']
+print (b)
 
- 
-list; mteams =  list()
-list; mMatches = list()
 
 with open ('results.csv', 'r',encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
-if((['home_team']) == 0):
-    homeTeam = (['home_team'])(mMatches[i].HomeTeam)
-    mteams.Add(homeTeam)
-
-if((['away_team']) == 0):
-    awayTeam = (['away_team'])(mMatches[i].HomeTeam)
-    mteams.Add(awayTeam)
-
-
-
-
     for line in csv_reader:
-        hs = int(line['home_score'])
-        hsa = int(line['away_score'])
-        if int(line['home_score'] < line['away_score']):
-            ha = homeTeam; l + 1
-        if int(line['home_score'] > line['away_score']):
-            ha = homeTeam; w + 1
-        if int(line['home_score'] == line['away_score']):
-            ha = homeTeam; t + 1
+        a = 1
+ #   w = (['win'])
+  #  t = (['tie'])
+   # l = (['lose'])
+    #hs = int(line['home_score'])
+    #hsa = int(line['away_score'])
+#    if int(line['home_score'] < line['away_score']):
+#        ha = TWLT; l + 1
+#    if int(line['home_score'] > line['away_score']):
+#       ha = TWLT; w + 1
+#    if int(line['home_score'] == line['away_score']):
+#        ha = TWLT; t + 1
+#    print (TWLT)
+#csv_file.close
 
-    for line in csv_reader:
-        hs = int(line['home_score'])
-        hsa = int(line['away_score'])
-        if hs < hsa:
-            hsa = awayTeam; w + 1
-        if hs > hsa:
-            hsa = awayTeam; l - 1
-        if hs == hsa:
-            hsa = awayTeam; t + 1
+
+#for line in csv_reader:
+              #a = TWLT
+#w = (['win'])
+#t = (['tie'])
+#l = (['lose'])
+#hs = int(line['home_score'])
+#hsa = int(line['away_score'])
+#if hs < hsa:
+            #hsa = TWLT; w + 1
+#if hs > hsa:
+            #hsa = TWLT; l - 1
+#if hs == hsa:
+            #hsa = TWLT; t + 1
            
            
 
-for line in mMatches:
-    int(line['home_team'])
+#for line in mMatches:
+#int(line['home_team'])
 
-    print("{0}(['home_score']) {1}w{2}l{3}t");
+#print (TWLT)
