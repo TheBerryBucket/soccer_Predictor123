@@ -1,34 +1,33 @@
 import csv
 from recordtype import recordtype
 
-team = recordtype ('Team', 'name win lose tie winningchance')
-teamsList = []
+team = recordtype ('Team', ' homeWin awayWin draw')
+#teamsList = []
 
-i = 0
+#homeTeam = [0][0]
 
 with open ('results.csv', 'r',encoding='utf-8') as csv_file:
     matchList = csv.DictReader(csv_file)
 
     for match in matchList:
-        a = match['tournament'] == "FIFA World Cup"
-        if a == False:
-            a = 'Fix'
-        if a == True:
-            a = match
-            i = i + 1
-            print (i , a)
 
-   # for match in matchList:
-      #  a == True:
-     #       i = i +
+        #homeTeam = homeTeam[0]
+        #awayTeam = awayTeam[0]
+
+        if match['home_team'[0][0]] == match['away_team'[0][0]]:
+            team.draw = team.draw
+            print ()
+        if match['home_team'[0][0]] < match['away_team'[0][0]]:
+            team.homeWin = team.homeWin
+            print ()
+        if match['home_team'[0][0]] > match['away_team'[0][0]]:
+            team.awayWin = team.awayWin
+            print ()
 
 
-#teamsList.remove ('win')
-#teamsList.remove ('lose')
-#teamsList.remove ('tie')
 
 #def SortTeams(team):
-  #return team.winningchance #tournament
+#  return team.name
 
 
 #teamsList.sort(key=SortTeams)
