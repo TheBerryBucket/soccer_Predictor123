@@ -1,35 +1,41 @@
 import csv
 from recordtype import recordtype
 
-team = recordtype ('Team', ' homeWin awayWin draw')
-#teamsList = []
+team = recordtype ('Team', 'name win lose tie')
+teamsList = []
 
-#homeTeam = [0][0]
+
 
 with open ('results.csv', 'r',encoding='utf-8') as csv_file:
     matchList = csv.DictReader(csv_file)
 
     for match in matchList:
+        homeTeam = [team for team in teamsList if team.name == match['home_team']]
+        awayTeam = [team for team in teamsList if team.name == match['away_team']]
 
-        #homeTeam = homeTeam[0]
-        #awayTeam = awayTeam[0]
+#        homeTeam = homeTeam[0]
 
-        if match['home_team'[0][0]] == match['away_team'[0][0]]:
-            team.draw = team.draw
-            print ()
-        if match['home_team'[0][0]] < match['away_team'[0][0]]:
-            team.homeWin = team.homeWin
-            print ()
-        if match['home_team'[0][0]] > match['away_team'[0][0]]:
-            team.awayWin = team.awayWin
-            print ()
+#       awayTeam = awayTeam[0]
+
+        if match['home_team'][0][0] == match['away_team'][0][0]:
+            print ("Draw",(match))
+
+        if match['home_team'][0][0] < match['away_team'][0][0]:
+            print ("HomeWin",(match))
+
+        if match['home_team'][0][0] > match['away_team'][0][0]:
+            print ("AwayWin",(match))
+
+    
 
 
+#teamsList.remove ('win')
+#teamsList.remove ('lose')
+#teamsList.remove ('tie')
 
 #def SortTeams(team):
-#  return team.name
+  #return team.name
 
 
 #teamsList.sort(key=SortTeams)
-
 #print (teamsList)
