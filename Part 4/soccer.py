@@ -13,18 +13,18 @@ with open ('results.csv', 'r',encoding='utf-8') as csv_file:
         homeTeam = [team for team in teamsList if team.name == match['home_team']]
         awayTeam = [team for team in teamsList if team.name == match['away_team']]
 
-#        homeTeam = homeTeam[0]
 
-#       awayTeam = awayTeam[0]
+        a = match['tournament'] == "FIFA World Cup"
+        if a == True:
+            
+            if match['home_team'][0][0] == match['away_team'][0][0]:
+                print ("Draw",(match))
 
-        if match['home_team'][0][0] == match['away_team'][0][0]:
-            print ("Draw",(match))
+            if match['home_team'][0][0] < match['away_team'][0][0]:
+                print ("HomeWin",(match))
 
-        if match['home_team'][0][0] < match['away_team'][0][0]:
-            print ("HomeWin",(match))
-
-        if match['home_team'][0][0] > match['away_team'][0][0]:
-            print ("AwayWin",(match))
+            if match['home_team'][0][0] > match['away_team'][0][0]:
+                print ("AwayWin",(match))
 
     
 
