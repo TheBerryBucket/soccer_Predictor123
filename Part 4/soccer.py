@@ -24,16 +24,8 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
             teamsList.append(awayTeam)
         else:
             awayTeam = awayTeam[0]
-        
-        if a == False:
-            if match['home_score'] > match['away_score']:
-                homeTeam.winningchance += 1
-                awayTeam.winningchance -= 1
-                
-            if match['home_score'] < match['away_score']:
-                homeTeam.winningchance -= 1
-                awayTeam.winningchance += 1
-        
+    
+   
         if a == True:
   
             if homeTeam.winningchance > awayTeam.winningchance:
@@ -77,7 +69,15 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
                     #print('0 - awayWin', match)
                     total = total + 1
 
+        if match['home_score'] > match['away_score']:
+            homeTeam.winningchance += 1
+            awayTeam.winningchance -= 1
+            
+        if match['home_score'] < match['away_score']:
+            homeTeam.winningchance -= 1
+            awayTeam.winningchance += 1
+
+print (score)
+print (total)
 score = score / total
 print(score)
-print (awayTeam.winningchance)
-print (homeTeam.winningchance)
