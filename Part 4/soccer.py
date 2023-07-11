@@ -3,6 +3,8 @@ from recordtype import recordtype
 
 team = recordtype('Team', 'name win lose draw')
 teamsList = []
+total = 0
+score = 0
 
 with open('results.csv', 'r', encoding='utf-8') as csv_file:
     matchList = csv.DictReader(csv_file)
@@ -31,28 +33,37 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
             if match['home_team'][0] == match['away_team'][0]:
                 if match['home_score'] == match['away_score']:
                     print ('1 - draw' , match)
-
+                    total += 1
+                    score += 1
                 if match['home_score'] != match['away_score']:
                     print ("0.3 - draw" , match)
-
+                    total += 1
+                    score += 0.3
             if match['home_team'][0] < match['away_team'][0]:
                 if match['home_score'] > match['away_score']:
                     print ('1 - homeWin' , match)
-
+                    total += 1
+                    score += 1
                 if match['home_score'] == match['away_score']:
                     print ('0.3 - homeWin' , match)
-
+                    total += 1
+                    score += 0.3
                 if match['home_score'] < match['away_score']:
                     print("0 - homeWin" , match)
-
+                    total += 1
+                    score += 0
             if match['home_team'][0] > match['away_team'][0]:
                 if match['home_score'] < match['away_score']:
                     print ('1 - awayWin' ,match)
-
+                    total += 1
+                    score += 1
                 if match['home_score'] == match['away_score']:
                     print ('0.3 - awayWin' , match)
-
+                    total += 1
+                    score += 0.3
                 if match['home_score'] > match['away_score']:
-                    print ('0', 'awayWin', match)
+                    print ('0 -', 'awayWin', match)
+                    total += 1
 
-
+score = score / total
+print (score)
