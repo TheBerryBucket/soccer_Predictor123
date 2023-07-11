@@ -26,67 +26,58 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
             awayTeam = awayTeam[0]
         
         if a == False:
-
             if match['home_score'] > match['away_score']:
                 homeTeam.winningchance += 1
                 awayTeam.winningchance -= 1
-
+                
             if match['home_score'] < match['away_score']:
                 homeTeam.winningchance -= 1
                 awayTeam.winningchance += 1
         
         if a == True:
-
-            #if match['home_score'] > match['away_score']:
-                #homeTeam.winningchance += 1
-                #awayTeam.winningchance -= 1
-
-            #if match['home_score'] < match['away_score']:
-                #homeTeam.winningchance -= 1
-                #awayTeam.winningchance += 1
-
-
   
             if homeTeam.winningchance > awayTeam.winningchance:
                 if match['home_score'] > match['away_score']:
-                    print('1 - HomeWin', match)
+                    #print('1 - HomeWin', match)
                     total = total + 1
                     score = score + 1
 
                 if match['home_score'] == match['away_score']:
-                    print('0.3 - homeWin', match)
+                    #print('0.3 - homeWin', match)
                     total = total + 1
                     score = score + 0.3
 
                 if match['home_score'] < match['away_score']:
-                    print("0 - homeWin", match)
+                    #print("0 - homeWin", match)
                     total = total + 1
 
-            if homeTeam.winningchance > awayTeam.winningchance:
+            if homeTeam.winningchance == awayTeam.winningchance:
                 if match['home_score'] == match['away_score']:
-                    print("1 - draw", match)
+                    #print("1 - draw", match)
                     total = total + 1
                     score = score + 1
 
                 if match['home_score'] != match['away_score']:
-                    print("0.3 - draw", match)
+                    #print("0.3 - draw", match)
                     total = total + 1
                     score = score + 0.3
 
             if homeTeam.winningchance < awayTeam.winningchance:
                 if match['home_score'] < match['away_score']:
-                    print('1 - awayWin', match)
+                    #print('1 - awayWin', match)
                     total = total + 1
                     score = score + 1
 
                 if match['home_score'] == match['away_score']:
-                    print('0.3 - awayWin', match)
+                    #print('0.3 - awayWin', match)
                     total = total + 1
                     score = score + 0.3
 
                 if match['home_score'] > match['away_score']:
-                    print('0 - awayWin', match)
+                    #print('0 - awayWin', match)
                     total = total + 1
 
 score = score / total
 print(score)
+print (awayTeam.winningchance)
+print (homeTeam.winningchance)
