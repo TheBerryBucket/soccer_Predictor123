@@ -25,17 +25,22 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
         else:
             awayTeam = awayTeam[0]
 
+        rd = homeTeam.EloRating - awayTeam.EloRating
+
+        if match['neutral'] == 'FALSE':
+            rd += 100
+
         matchScore = 0
         ar = 0
-        if -50 <= homeTeam.EloRating - awayTeam.EloRating <= 50:
+        if -50 <= rd <= 50:
+
 
             if match['home_score'] != match['away_score']:
                 if match['home_score'] > match['away_score']:
                     ar = 1
                 else:
                     ar = 0
-                #print('0.3 - Draw', match)
-                #print( homeTeam, awayTeam , (homeTeam.EloRating) , (awayTeam.EloRating))
+                
                     
                 matchScore = 0.3
 
@@ -46,7 +51,8 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
                 matchScore = 1
 
 
-        if homeTeam.EloRating - awayTeam.EloRating > 50:
+
+        if rd > 50:
 
             if match['home_score'] > match['away_score']:
                 #print('1 - HomeWin', match)
@@ -64,8 +70,10 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
                 #print('0 - HomeWin', match)
                 #print( homeTeam, awayTeam , (homeTeam.EloRating) , (awayTeam.EloRating))
                 ar = 0
-                
-        if homeTeam.EloRating - awayTeam.EloRating < -50: 
+
+
+
+        if rd < -50: 
 
             if match['home_score'] < match['away_score']:
                 #print('1 - AwayWin', match)
@@ -82,11 +90,11 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
                 #print('0 - AwayWin', match)
                 #print( homeTeam, awayTeam , (homeTeam.EloRating) , (awayTeam.EloRating))
                 ar = 1
-                
 
             
-        rd = homeTeam.EloRating - awayTeam.EloRating
+
         er = 1 / (10**(-rd/400) + 1)
+
 
 
         homeTeam.EloRating = homeTeam.EloRating + 40 * (ar-er)
@@ -97,15 +105,7 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
             score += matchScore
 
 
-            #if match['home_score'] > match['away_score']:
-                #homeTeam.EloRating += 1
-                
-           # if match['home_score'] < match['away_score']:
-                #awayTeam.EloRating += 1
-
-           # if match['home_score'] == match['away_score']:
-                #homeTeam.EloRating += 0.5
-               # awayTeam.EloRating += 0.5             
+                   
        
 
 print (score)
