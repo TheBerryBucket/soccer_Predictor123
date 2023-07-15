@@ -6,7 +6,7 @@ teamsList = []
 total = 0
 score = 0
 
-with open('results.csv', 'r', encoding='utf-8') as csv_file:
+with open("c:/Users/Gareth/Documents/Github/soccer_Predictor123/Part 4/results.csv", 'r', encoding='utf-8') as csv_file:
     matchList = csv.DictReader(csv_file)
 
     for match in matchList:
@@ -114,7 +114,7 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
                 ar = 1
 
             
-
+        mi = 40
         er = 1 / (10**(-rd/400) + 1)
         mov = int(match['home_score']) - int(match['away_score'])
         af = 1
@@ -138,9 +138,13 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
         if mov >= -4:
             Af = 1.9
 
+        if ['tournament'] == 'friendly':
+            mi = 20
+        if ['touranemnt'] == 'FIFA World Cup':
+            mi = 60
 
-        homeTeam.EloRating = homeTeam.EloRating + 40 * (ar-er) * af
-        awayTeam.EloRating = awayTeam.EloRating - 40 * (ar-er) * Af
+        homeTeam.EloRating = homeTeam.EloRating - mi * (ar-er) * af
+        awayTeam.EloRating = awayTeam.EloRating + mi * (ar-er) * Af
             
         if a == True:
             total += 1
