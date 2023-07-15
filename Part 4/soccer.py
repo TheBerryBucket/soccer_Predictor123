@@ -26,7 +26,29 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
             awayTeam = awayTeam[0]
 
         rd = homeTeam.EloRating - awayTeam.EloRating
+        mov = int(match['home_score']) - int(match['away_score'])
+        af = 1
+        Af = 1
+  
+        if mov == 2:
+            af = 1.5
 
+        if mov == 3:
+            af = 1.75
+
+        if mov >= 4:
+            af = 1.9
+
+        if mov == -2:
+            Af = 1.5
+
+        if mov == -3:
+            Af = 1.75
+
+        if mov <= -4:
+            Af = 1.9
+
+    
         if match['neutral'] == 'FALSE':
             rd += 100
 
@@ -94,11 +116,31 @@ with open('results.csv', 'r', encoding='utf-8') as csv_file:
             
 
         er = 1 / (10**(-rd/400) + 1)
+        mov = int(match['home_score']) - int(match['away_score'])
+        af = 1
+        Af = 1
+  
+        if mov == 2:
+            af = 1.5
+
+        if mov == 3:
+            af = 1.75
+
+        if mov <= 4:
+            af = 1.9
+
+        if mov == -2:
+            Af = 1.5
+
+        if mov == -3:
+            Af = 1.75
+
+        if mov >= -4:
+            Af = 1.9
 
 
-
-        homeTeam.EloRating = homeTeam.EloRating + 40 * (ar-er)
-        awayTeam.EloRating = awayTeam.EloRating - 40 * (ar-er)
+        homeTeam.EloRating = homeTeam.EloRating + 40 * (ar-er) * af
+        awayTeam.EloRating = awayTeam.EloRating - 40 * (ar-er) * Af
             
         if a == True:
             total += 1
